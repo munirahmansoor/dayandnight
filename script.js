@@ -1,5 +1,5 @@
 const sheetURL =
-  'https://docs.google.com/spreadsheets/d/1sJzBnjGizMoseiMmSLoQ8uapEeGBtQPBYJLJknT94tU/edit?usp=sharing';
+  'https://docs.google.com/spreadsheets/d/1sJzBnjGizMoseiMmSLoQ8uapEeGBtQPBYJLJknT94tU/gviz/tq?tqx=out:json';
 
 const container = document.getElementById('experiments');
 
