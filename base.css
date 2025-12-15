@@ -7,7 +7,7 @@ color: #eaeaea;
 
 
 .lab {
-max-width: 720px;
+max-width: 100vw;
 padding: 1.5rem 4rem;
 }
 
@@ -41,6 +41,13 @@ opacity: 0.5;
 margin: 0.25rem 0 0;
 }
 
+.experiments {
+  display: flex;          /* enable flexbox */
+  flex-wrap: wrap;        /* allow items to wrap to next row */
+  gap: 2rem;              /* space between items */
+  justify-content: flex-start; /* align items to start (can change to center) */
+}
+
 .exp {
   opacity: 0;
   transform: translateY(12px);
@@ -63,3 +70,27 @@ margin: 0.25rem 0 0;
 .exp:hover .desc {
   opacity: 0.6;
 }
+
+.preview {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 70vw;
+  max-width: 800px;
+  height: 70vh;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 9999;
+  background: rgba(0,0,0,0.9);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0,0,0,0.7);
+}
+
+.preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
