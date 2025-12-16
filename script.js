@@ -16,10 +16,18 @@ toggleBtn.addEventListener('click', () => {
   isImageFirst = !isImageFirst;
   lab.classList.toggle('image-first', isImageFirst);
   lab.classList.toggle('text-first', !isImageFirst);
-  toggleBtn.textContent = isImageFirst ? 'Image-first' : 'Text-first';
+  toggleBtn.textContent = isImageFirst ? 'List' : 'Cards';
 
   if (isImageFirst) previewImg.src = '';
 });
+
+
+
+// When the user clicks on div, open the popup
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
 
 // -------------------- FETCH GOOGLE SHEET --------------------
 const sheetURL = 'https://docs.google.com/spreadsheets/d/1sJzBnjGizMoseiMmSLoQ8uapEeGBtQPBYJLJknT94tU/gviz/tq?tqx=out:json&sheet=Sheet1';
@@ -58,21 +66,22 @@ function renderProjects(projects) {
 
     el.innerHTML = `
       <div class="card-image" style="background-image:url('${p.preview}')"></div>
-      <a class="title" href="${p.url}" target="_blank">${p.title}</a>
-      <p class="desc">${p.description}</p>
+      <div class="title-tag"><p class="title">${p.title}</p>
       <div class="tags">
         ${tagsArray.map(tag => `<span class="tag">${tag}</span>`).join('')}
-      </div>
-      <button class="read-more-btn">+</button>
+      </div></div>
+      <p class="desc">${p.description}</p>
+      
+     
     `;
 
-    // Hover preview (text-first only)
+   // Hover preview (text-first only)
     el.addEventListener('mouseenter', () => {
       if (!isImageFirst && p.preview) previewImg.src = p.preview;
     });
 
-    // Read More button
-    el.querySelector('.read-more-btn').addEventListener('click', () => {
+    // CLICK ENTIRE CARD
+    el.addEventListener('click', () => {
       openReadPanel(p);
     });
 
@@ -88,7 +97,7 @@ function renderTagFilters(projects) {
   // Create Reset button
   const resetBtn = document.createElement('button');
   resetBtn.className = 'tag-filter-btn reset';
-  resetBtn.textContent = 'Reset';
+  resetBtn.textContent = 'Reset filter';
   resetBtn.addEventListener('click', () => {
     showAllProjects();
     document.querySelectorAll('.tag-filter-btn').forEach(b => b.classList.remove('active'));
@@ -168,8 +177,8 @@ function renderTagFilters(projects) {
 function openReadPanel(project) {
   panelContent.innerHTML = `
     <h2>${project.title}</h2>
-    ${project.labels ? `<p><em>${project.labels}</em></p>` : ''}
-    ${project.description ? `<p>${project.description}</p>` : ''}
+    ${project.labels ? `<p>${project.labels}</p>` : ''}
+   
     ${project.notes ? `<div>${project.notes.replace(/\n/g,'<br>')}</div>` : '<p style="opacity:.5">No notes yet.</p>'}
     ${project.iframe ? `<div class="iframe-wrapper">${project.iframe}</div>` : ''}
   `;
@@ -239,3 +248,5 @@ function showAllProjects() {
     card.style.display = '';
   });
 }
+
+
