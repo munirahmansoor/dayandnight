@@ -8,16 +8,34 @@
 </head>
 <body>
 
+<!-- Bottom navigation / tags -->
+<div class="bottom-nav">
+  <div id="tag-filter"></div>
+  <h4>by munirah</h4>
+</div>
 
+<!-- Top bar / header -->
 <header class="topbar">
-  <h1>kacamata</h1>
-<div id="tag-filter" class="tag-filter"></div>
+  <div class="">
+    <h3>play journal</h3>
+  </div>
 
-  <button id="toggle-view" class="pill">Text-first</button>
+  <!-- VIEW TOGGLE SWITCH -->
+  <div class="view-toggle">
+    <span class="toggle-label">List</span>
 
+    <!-- Switch input -->
+    <label class="switch">
+      <input type="checkbox" id="toggle-view" />
+      <span class="slider"></span>
+    </label>
 
+    <span class="toggle-label">Grid</span>
+  </div>
 </header>
 
+
+<!-- MAIN LAB -->
 <main id="lab" class="text-first">
   <!-- LEFT: scrollable experiment cards -->
   <section id="experiments" class="experiments"></section>
@@ -26,12 +44,17 @@
   <div class="preview">
     <img id="preview-img" />
   </div>
+
+
+
+
 </main>
 
 <!-- LEFT SLIDE-IN PANEL -->
 <aside id="read-panel">
   <button id="close-panel">×</button>
   <div id="panel-content"></div>
+  <div class="fade-overlay"></div>
 </aside>
 
 <script src="script.js"></script>
