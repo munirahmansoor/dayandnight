@@ -1,65 +1,69 @@
-body {
-  font-family: 'System UI', sans-serif;
-  margin: 0;
-  padding: 2rem;
-  background: #111;
-  color: #eee;
-}
-
-header h1 {
-  margin: 0 0 0.5rem 0;
-}
-
-a.title{
-  color: #eee;
-  font-size: 2rem;
-  text-decoration: none;
-}
-
-header p {
-  margin: 0 0 2rem 0;
-  color: #aaa;
-}
-
-/* Flexbox grid */
-.experiments {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: flex-start;
-}
-
-/* Experiment cards */
 .exp {
-  /* background: #1a1a1a; */
-  padding: 1rem;
+  position: relative;
+  overflow: hidden;
   border-radius: 8px;
+  cursor: pointer;
   flex: 1 1 calc(33% - 2rem);
   min-width: 220px;
   max-width: 400px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+  height: 250px;
 }
 
-/* .exp:hover {
-  transform: translateY(-4px);
-} */
+.card-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
-.exp .meta,
-.exp .desc {
+.card-info {
+  padding: 1rem;
+  color: #fff;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Image-first view */
+.experiments.image-first .exp .card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
   opacity: 0;
-  transform: translateY(10px); /* start slightly lower */
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  margin: 0.5rem 0 0 0;
-  pointer-events: none; /* prevent accidental hover */
+  transform: translateY(100%);
 }
 
-.exp:hover .meta,
-.exp:hover .desc {
-  opacity: 0.8;
-  transform: translateY(0); /* slide up to position */
+.experiments.image-first .exp:hover .card-info {
+  opacity: 1;
+  transform: translateY(0);
 }
 
+.experiments.image-first .exp:hover .card-image {
+  transform: scale(1.05);
+}
+
+/* Text-first view */
+.experiments.text-first .exp .card-info {
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+  background: none;
+}
+
+.experiments.text-first .exp .card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.experiments.text-first .exp:hover .card-image {
+  opacity: 1;
+  z-index: 0;
+}
 
 /* Hover preview */
 .preview {
@@ -69,20 +73,18 @@ header p {
   width: 70vw;
   max-width: 800px;
   height: 70vh;
-  transform: translate(-50%, -50%); /* no scale */
-  opacity: 0; /* hidden initially */
+  transform: translate(-50%, -50%);
+  opacity: 0;
   z-index: 9999;
-  background: none;
+  background: rgba(0,0,0,0.9);
   border-radius: 12px;
   overflow: hidden;
- 
-  transition: opacity 0.6s ease; /* only fade */
-  pointer-events: none; /* prevents hover flicker */
+  box-shadow: 0 0 40px rgba(0,0,0,0.7);
+  transition: opacity 0.6s ease;
+  pointer-events: none;
 }
 
-.preview.show {
-  opacity: 1; /* fade in */
-}
+.preview.show { opacity: 1; }
 
 .preview img {
   width: 100%;
