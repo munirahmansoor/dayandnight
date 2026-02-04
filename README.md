@@ -1,4 +1,5 @@
 ABOUT
+
 This repository is a living archive of my experimental creative coding projects.
 The works here explore interaction, perception, data, and systems through code—often blurring the line between design, art, and computation.
 Projects range from quick technical studies to fully realised interactive prototypes. Some are polished, others are deliberately messy. All are part of an ongoing process of learning, testing, and pushing tools beyond their expected use.
@@ -6,6 +7,7 @@ Projects range from quick technical studies to fully realised interactive protot
 My intereest is in creating interactive systems, and hopefully int he future generative real-time media with procedural logic. My approach is looking at tech and machine learning as a creative collaborator.
 
 TOOLS AND FRAMEWORKS
+
 This portfolio primarily uses the following software and libraries:
 
 🧠 ComfyUI
